@@ -70,6 +70,41 @@ if (data.fileBase64) {
     }
 }
 </script>
+<script>
+    // Get the full query string
+    const raw = window.location.search.substring(1); // removes the "?"
+    
+    if (!raw) {
+        document.getElementById("details").innerText = "No data found in QR.";
+        throw new Error("No QR data");
+    }
+
+    let info;
+    try {
+        info = JSON.parse(decodeURIComponent(raw));
+    } catch (e) {
+        document.getElementById("details").innerText = "Invalid QR data.";
+        throw e;
+    }
+
+    // Display details
+    document.getElementById("details").innerText = info.details || "No details provided";
+
+    // Display file if attached
+    if (info.fileBase64) {
+        let section = document.getElementById("file_section");
+        section.innerHTML = `
+            <p><strong>File Attached:</strong> ${info.fileName}</p>
+            <a href="${info.fileBase64}" download="${info.fileName}">Download File</a>
+        `;
+
+        // If image, show preview
+        if (info.fileType && info.fileType.startsWith("image/")) {
+            section.innerHTML += `<br><br><img src="${info.fileBase64}" style="max-width:300px;">`;
+        }
+    }
+</script>
 
 </body>
 </html>
+
