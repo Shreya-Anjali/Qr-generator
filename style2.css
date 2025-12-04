@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+h1 {
+  color: #00796b;
+  margin-bottom: 1.5rem;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: vertical;
+  background-color: #f9f9f9;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 2px dashed #b0bec5;
+  border-radius: 8px;
+  background-color: #fafafa;
+  cursor: pointer;
+  margin-bottom: 1.2rem;
+}
+
+button {
+  background-color: #00796b;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background-color: #004d40;
+  transform: scale(1.02);
+}
+
+#qrcode {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  display: inline-block;
+  border-radius: 8px;
+  border: 2px solid #cfd8dc;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Smooth appearing animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Download button styling */
+#download-btn {
+  display: none;
+  background-color: #004d40;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#download-btn:hover {
+  background-color: #002f26;
+}

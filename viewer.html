@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Information</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f7fbff;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+.card {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+#download-btn {
+    background: #0078c4;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+#preview {
+    margin-top: 15px;
+    max-width: 100%;
+    border-radius: 8px;
+    display: none;
+}
+</style>
+</head>
+<body>
+
+<h1>Medical Profile</h1>
+<div class="card">
+    <p id="details" style="white-space: pre-line;"></p>
+    <img id="preview">
+    <button id="download-btn" style="display: none;">Download Attachment</button>
+</div>
+
+<script>
+let raw = decodeURIComponent(location.search.substring(1));
+let data = {};
+try { data = JSON.parse(raw); } 
+catch { document.body.innerHTML = "<h2>Invalid QR Data</h2>"; }
+
+document.getElementById("details").textContent = data.details || "No details available";
+
+if (data.fileBase64) {
+    let btn = document.getElementById("download-btn");
+    btn.style.display = "block";
+    btn.onclick = () => {
+        let a = document.createElement("a");
+        a.href = data.fileBase64;
+        a.download = data.fileName;
+        a.click();
+    };
+
+    if (data.fileType.startsWith("image/")) {
+        let img = document.getElementById("preview");
+        img.src = data.fileBase64;
+        img.style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
