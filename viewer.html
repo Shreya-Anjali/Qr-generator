@@ -38,12 +38,15 @@ body {
 </head>
 <body>
 
-<h1>Medical Profile</h1>
+    <h1>Medical Profile</h1>
 <div class="card">
     <p id="details" style="white-space: pre-line;"></p>
     <img id="preview">
+    <div id="file_section"></div>
     <button id="download-btn" style="display: none;">Download Attachment</button>
 </div>
+
+
 
 <script>
 let raw = decodeURIComponent(location.search.substring(1));
@@ -107,4 +110,5 @@ if (data.fileBase64) {
 
 </body>
 </html>
+
 
