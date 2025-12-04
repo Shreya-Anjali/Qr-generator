@@ -35,7 +35,8 @@ function createQR(data) {
 
     // Works locally & on GitHub Pages
     const baseURL = window.location.origin + window.location.pathname.replace("index.html", "");
-    const viewerURL = baseURL + "viewer.html?" + encodeURIComponent(jsonString);
+    const viewerURL = "https://shreya-anjali.github.io/Qr-generator/viewer.html?" + encodeURIComponent(jsonString);
+
 
     const qrcodeEl = document.getElementById("qrcode");
     qrcodeEl.innerHTML = "";
@@ -70,3 +71,4 @@ function downloadQR(imageSrc) {
     link.download = "QR_Code.png";
     link.click();
 }
+
